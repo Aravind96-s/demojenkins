@@ -25,7 +25,7 @@ pipeline {
               cmd /c start "" node app.js
 
               echo Done
-             exit 0
+             
              '''
     }
 }
