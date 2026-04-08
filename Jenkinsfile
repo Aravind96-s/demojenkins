@@ -16,15 +16,16 @@ pipeline {
         }
 
         stage('Deploy') {
-           steps {
+          steps {
               bat '''
-              echo Killing old node process...
-              taskkill /F /IM node.exe || echo No process
+              echo Stopping old app...
+              pm2 delete myapp || echo No app
 
-              echo Starting app...
-              cmd /c start "" node app.js
+             echo Starting app with PM2...
+               pm2 start app.js --name myapp
 
-              echo Done
+             pm2 save
+
              exit 0
              '''
     }
