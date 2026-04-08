@@ -11,7 +11,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
@@ -23,9 +23,12 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh '''
-                pkill node || true
-                nohup node app.js > app.log 2>&1 &
+                bat '''
+                echo Killing old node process...
+                taskkill /F /IM node.exe || echo No process
+
+                echo Starting app...
+                start /B node app.js
                 '''
             }
         }
