@@ -16,17 +16,17 @@ pipeline {
         }
 
         stage('Deploy') {
-           steps {
+            steps {
               bat '''
               echo Killing old node process...
-              taskkill /F /IM node.exe || echo No process
+               taskkill /F /IM node.exe || echo No process
 
-              echo Starting app...
-              cmd /c start "" node app.js
+              echo Starting app in separate process...
+              start "" cmd /k "cd /d C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\demo && node app.js"
 
-              echo Done
-             
-             '''
+               echo Done
+              exit 0
+               '''
     }
 }
     }
