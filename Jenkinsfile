@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Aravind96-s/demojenkins.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
