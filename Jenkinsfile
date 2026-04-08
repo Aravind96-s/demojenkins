@@ -22,15 +22,17 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                bat '''
-                echo Killing old node process...
-                taskkill /F /IM node.exe || echo No process
+           steps {
+             bat '''
+             echo Killing old node process...
+             taskkill /F /IM node.exe || echo No process
 
-                echo Starting app...
-                start /B node app.js
-                '''
-            }
-        }
+             echo Starting app...
+             start "" /B node app.js
+
+             exit 0
+             '''
+    }
+}
     }
 }
