@@ -19,13 +19,13 @@ pipeline {
             steps {
               bat '''
               echo Killing old node process...
-               taskkill /F /IM node.exe || echo No process
+              taskkill /F /IM node.exe >nul 2>&1 || echo No process
 
-              echo Starting app in separate process...
-              start "" cmd /k "cd /d C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\demo && node app.js"
+              echo Starting app...
+              cd /d C:\ProgramData\Jenkins\.jenkins\workspace\demo
+              start /B node app.js
 
-               echo Done
-              exit 0
+              echo Done
                '''
     }
 }
