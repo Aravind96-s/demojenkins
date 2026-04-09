@@ -22,7 +22,7 @@ pipeline {
               taskkill /F /IM node.exe >nul 2>&1 || echo No process
 
               echo Starting app...
-              cd /d C:\ProgramData\Jenkins\.jenkins\workspace\demo
+              cd /d C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\demo
               start /B node app.js
 
               echo Done
